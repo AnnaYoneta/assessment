@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profile</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      max-width: 600px;
+      margin: 50px auto;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    img {
+      max-width: 100px;
+      border-radius: 50%;
+    }
+    input[type="number"] {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+    }
+    select {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+    }
+    button {
+      padding: 10px 20px;
+      margin-top: 10px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <img src="your_photo.jpg" alt="Your Photo">
+  <h2>Anna Yoneta Ulu</h2>
+  <p>NIM: 607012390002</p>
+  <p>Kelas: D3SI-46-01</p>
+
+  <input type="number" id="jumlah" placeholder="Jumlah Buku">
+  <select id="pilihan">
+    <option value="sherlock">Sherlock</option>
+    <option value="lupin">Lupin</option>
+    <option value="aladin">Aladin</option>
+  </select>
+  <button onclick="ambilBuku()">Ambil Buku</button>
+</div>
+
+<script>
+  let buku = [
+    {"nama": "sherlock", "jumlah":2},
+    {"nama": "lupin", "jumlah":2},
+    {"nama": "aladin", "jumlah":2},
+  ];
+
+  function ambilBuku() {
+    let jumlah = parseInt(document.getElementById("jumlah").value);
+    let pilihan = document.getElementById("pilihan").value;
+
+    if (isNaN(jumlah) || jumlah <= 0) {
+      alert("Masukkan jumlah buku yang valid.");
+      return;
+    }
+
+    let bukuDitemukan = false;
+    for (let i = 0; i < buku.length; i++) {
+      if (buku[i].nama === pilihan) {
+        bukuDitemukan = true;
+        if (jumlah > buku[i].jumlah) {
+          alert("Jumlah buku tidak tersedia.");
+          return;
+        } else {
+          alert("Silahkan ambil buku Anda.");
+          return;
+        }
+      }
+    }
+
+    if (!bukuDitemukan) {
+      alert("Buku tidak ditemukan.");
+    }
+  }
+</script>
+
+</body>
+</html>
